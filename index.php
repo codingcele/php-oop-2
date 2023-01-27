@@ -218,19 +218,75 @@ class Toy extends Product {
 
 }
 
+class Kennel extends Product {
+
+    private $height;
+    private $width;
+    private $depth;
+
+    public function __construct($name, $code, $cost, Category $category, $height, $width, $depth) {
+
+        parent :: __construct($name, $code, $cost, $category);
+
+        $this -> setHeight($height);
+        $this -> setWidth($width);
+        $this -> setDepth($depth);
+
+    }
+
+    public function getHeight() {
+
+        return $this -> height;
+    }
+    public function setHeight($height) {
+
+        $this -> height = $height;
+    }
+
+    public function getWidth() {
+
+        return $this -> width;
+    }
+    public function setWidth($width) {
+
+        $this -> width = $width;
+    }
+
+    public function getDepth() {
+
+        return $this -> depth;
+    }
+    public function setDepth($depth) {
+
+        $this -> depth = $depth;
+    }
+
+    
+    public function getHtml() {
+
+        return parent :: getHtml() . "<br>"
+            . $this -> getHeight() . "<br>"
+            . $this -> getWidth() . "<br>"
+            . $this -> getDepth() . "<br>"
+            . "<br>";
+    }
+
+}
+
 
 $category1 = new Category("Cani", "Prodotti per cani");
 $category2 = new Category("Gatti", "Prodotti per gatti");
 
 
 
-$toy1 = new Toy("Osso", "LF746", "10", $category1, "Pink", "2+", "Il cane mangia l'osso");
+$toy1 = new Toy("Osso", "LF746", "10 €", $category1, "Pink", "2+", "Il cane mangia l'osso.");
 
-/* $name, $code, $cost, Category $category, $ingredients, $allergeni, $paese */
-$food1 = new Food("Croccantini", "CK674", "20", $category2, "Gdgdg, ddhhdhd, fffjj.", "gdgdg", "Croccantini al tonno.");
+$food1 = new Food("Croccantini", "CK674", "20 €", $category2, "Gdgdg, ddhhdhd, fffjj.", "gdgdg", "Croccantini al tonno.");
 
-
+$kennel1 = new Kennel("Cuccia piccola", "CP7483", "29,99 €", $category1, "40 cm", "30 cm", "60 cm");
 
 echo $toy1 -> getHtml();
 
 echo $food1 -> getHtml();
+
+echo $kennel1 -> getHtml();
